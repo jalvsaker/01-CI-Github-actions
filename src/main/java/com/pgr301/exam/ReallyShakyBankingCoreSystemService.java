@@ -39,12 +39,8 @@ class ReallyShakyBankingCoreSystemService implements BankingCoreSystmeService {
     public Account updateAccount(Account a) {
         randomizedWait(2000);
         randomizeExceptionOrPanic(0.9f);
-        Account account = getOrCreateAccount(a.getId());
-        account.setBalance(a.getBalance());
-        account.setCurrency(a.getCurrency());
-        theBank.put(a.getId(), a);
-        return account;
-    }
+   
+   
 
     @Override
     public BigDecimal balance(@PathVariable String accountId) {
@@ -66,10 +62,7 @@ class ReallyShakyBankingCoreSystemService implements BankingCoreSystmeService {
             Account a = new Account();
             a.setId(accountId);
             theBank.put(accountId, a);
-        }
-        return theBank.get(accountId);
-    }
-
+   
     private void randomizeExceptionOrPanic(double probability) {
         randomizeExceptionOrPanic(probability, 0.2d);
     }
